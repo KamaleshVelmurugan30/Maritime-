@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply w-full rounded-xl px-4 py-3
+    bg-slate-950/40 backdrop-blur-md
+    text-slate-100 placeholder:text-slate-400
+    ring-1 ring-white/15
+    outline-none
+    transition
+    focus:ring-2 focus:ring-primary/60 focus:bg-slate-950/55;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 220 25% 6%;
+    --foreground: 200 20% 95%;
+
+    --card: 215 30% 10%;
+    --card-foreground: 200 20% 95%;
+
+    --popover: 215 30% 10%;
+    --popover-foreground: 200 20% 95%;
+
+    --primary: 175 70% 45%;
+    --primary-foreground: 220 25% 6%;
+
+    --secondary: 210 25% 16%;
+    --secondary-foreground: 200 20% 85%;
+
+    --muted: 215 20% 14%;
+    --muted-foreground: 210 15% 55%;
+
+    --accent: 175 50% 30%;
+    --accent-foreground: 200 20% 95%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 18%;
+    --input: 215 20% 14%;
+    --ring: 175 70% 45%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 200 20% 85%;
+    --sidebar-primary: 175 70% 45%;
+    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-accent: 215 20% 14%;
+    --sidebar-accent-foreground: 200 20% 85%;
+    --sidebar-border: 215 20% 18%;
+    --sidebar-ring: 175 70% 45%;
+
+    /* Custom tokens */
+    --ocean-start: 220 40% 8%;
+    --ocean-end: 200 35% 12%;
+    --glow-primary: 175 70% 45%;
+    --glow-accent: 190 60% 40%;
+    --glass-bg: 215 30% 12%;
+    --glass-border: 215 20% 22%;
+    --kpi-glow: 175 70% 45%;
+    --success: 160 60% 45%;
+    --success-foreground: 160 60% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border backdrop-blur-xl;
+    background: hsl(var(--glass-bg) / 0.6);
+    border-color: hsl(var(--glass-border) / 0.4);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    border-color: hsl(var(--glow-primary) / 0.3);
+    box-shadow: 0 0 30px -10px hsl(var(--glow-primary) / 0.15);
+    transform: translateY(-2px);
+  }
+
+  .glow-button {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold text-sm tracking-wide transition-all duration-300;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 0 20px -5px hsl(var(--glow-primary) / 0.4);
+  }
+
+  .glow-button:hover {
+    box-shadow: 0 0 35px -5px hsl(var(--glow-primary) / 0.6);
+    transform: translateY(-1px);
+  }
+
+  .ocean-gradient {
+    background: linear-gradient(
+      160deg,
+      hsl(var(--ocean-start)) 0%,
+      hsl(var(--ocean-end)) 50%,
+      hsl(220 35% 10%) 100%
+    );
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--glow-primary)) 0%,
+      hsl(var(--glow-accent)) 100%
+    );
+  }
+
+  .kpi-glow {
+    box-shadow: 0 0 40px -15px hsl(var(--kpi-glow) / 0.25);
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border px-4 py-3 text-sm transition-all duration-200 outline-none;
+    background: hsl(var(--input));
+    border-color: hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
+
+  .input-field::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .input-field:focus {
+    border-color: hsl(var(--glow-primary) / 0.5);
+    box-shadow: 0 0 15px -5px hsl(var(--glow-primary) / 0.2);
+  }
+
+  .section-divider {
+    @apply w-full h-px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--border)) 50%,
+      transparent 100%
+    );
+  }
+}
+
+@layer utilities {
+  .animate-count-up {
+    animation: countUp 1.5s ease-out forwards;
+  }
+
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes subtlePulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .animate-subtle-pulse {
+    animation: subtlePulse 3s ease-in-out infinite;
+  }
+}
