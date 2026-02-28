@@ -19,7 +19,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-2.5">
             <Anchor className="w-5 h-5 text-primary" />
             <span className="text-lg font-bold tracking-tight text-foreground">
-              NaviGreen AI
+              NaviGreen
             </span>
             <span className="text-lg">🌊</span>
           </Link>
